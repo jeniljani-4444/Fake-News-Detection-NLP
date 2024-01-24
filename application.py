@@ -22,6 +22,8 @@ hide_streamlit_footer = """
 
 """
 
+# <style> and </style>
+
 st.markdown(hide_streamlit_footer,unsafe_allow_html=True)
 
 
