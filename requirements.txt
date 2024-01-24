@@ -1,5 +1,5 @@
 nltk
 pandas 
 numpy
-scikit-learn
+scikit-learn==1.4.0
 streamlit
