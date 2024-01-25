@@ -1,26 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Fake News Detection</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Fake News Detection &#x1F4F0;</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #f8f9fa;
+            margin-top: 70px;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            font-size: 26px;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            align-items: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        textarea {
+            margin: auto;
+            display: block;
+            resize: none;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Fake News Detection</h1>
-        <form action="{{ url_for('predict') }}" method="post">
-            <label for="news_text">Enter News Text:</label>
-            <textarea name="news_text" rows="4" required></textarea>
-            <button type="submit">Predict</button>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Fake News Detection &#x1F4F0;</a>
+    </nav>
+
+    <div class="container mt-4 col-md-8 offset-md-2">
+        <form action="http://127.0.0.1:5000/predict" method="post">
+            <h4>Enter News Text</h4>
+            <textarea class="form-control" rows="12" placeholder="Type your news here..."
+                style="width: 80vb;" id="news_text" name="news_text" required></textarea>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
+
         {% if result %}
-        <div class="result">
-            <p><strong>Result:</strong> {{ result }}</p>
-            <p><strong>News Text:</strong> {{ news_text }}</p>
-        </div>
+        <h5 class="mt-3">{{ result }}</h5>
         {% endif %}
     </div>
+
+    <div class="footer">
+        Made with &#x2764;&#xFE0F; by Jenil Jani
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
