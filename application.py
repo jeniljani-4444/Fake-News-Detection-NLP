@@ -32,7 +32,7 @@ def fake_news(news):
 def index():
     return render_template('index.html')
 
-@application.route('/predict', methods=['POST'])
+@application.route('/predict', methods=['GET','POST'])
 def predict():
     if request.method == 'POST':
         sentence = request.form['news_text']
@@ -46,4 +46,4 @@ def predict():
         return render_template('index.html', result=result, news_text=sentence)
 
 if __name__ == '__main__':
-    application.run(host="0.0.0.0")
+    application.run(host="0.0.0.0",port=8000,debug=True)
