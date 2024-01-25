@@ -46,4 +46,4 @@ def predict():
         return render_template('index.html', result=result, news_text=sentence)
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run(host="0.0.0.0")
