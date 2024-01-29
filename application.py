@@ -5,7 +5,7 @@ from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 
-application = Flask(__name__)
+app = Flask(__name__)
 
 port_stem = PorterStemmer()
 vectorization = TfidfVectorizer()
@@ -28,11 +28,11 @@ def fake_news(news):
     prediction = load_model.predict(vector_form1)
     return prediction
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@application.route('/predict', methods=['GET','POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         sentence = request.form['news_text']
@@ -46,4 +46,4 @@ def predict():
         return render_template('index.html', result=result, news_text=sentence)
 
 if __name__ == '__main__':
-    application.run(host="0.0.0.0",port=8000,debug=True)
+    app.run(host="0.0.0.0",debug=True)
